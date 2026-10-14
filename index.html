@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nama Lengkap | Portofolio & Blog Mahasiswa</title>
+<meta name="description" content="Portofolio dan blog belajar Nama Lengkap, mahasiswa semester 5 Teknik Informatika.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F4F8; --surface:#FFFFFF; --ink:#101828; --muted:#4A5568; --line:#D5DBE6;
+  --accent:#2F4BFF; --accent-ink:#FFFFFF; --mark:#FFD84D;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Newsreader",Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#0E1424; --surface:#161E33; --ink:#EEF1F8; --muted:#A5AEC2; --line:#2A3452; --accent:#8FA2FF; --accent-ink:#0E1424;}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.125rem;line-height:1.7}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);line-height:1.15;margin:0}
+
+/* Header */
+header{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px}
+.brand{font-family:var(--display);font-weight:700;color:var(--ink);text-decoration:none}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav a{font-family:var(--display);font-weight:500;font-size:.95rem;color:var(--ink);text-decoration:none;padding:6px 12px;border-radius:999px}
+nav a:hover{background:var(--surface)}
+
+/* Hero */
+.hero{padding:72px 0 56px}
+.hero h1{font-size:clamp(2.4rem,7vw,4.6rem);font-weight:700;letter-spacing:-.02em;max-width:15ch}
+.hero p{max-width:56ch;color:var(--muted);margin:24px 0 32px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{font-family:var(--display);font-weight:500;text-decoration:none;padding:12px 22px;border-radius:10px;border:2px solid var(--ink);color:var(--ink)}
+.btn.main{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:hover{transform:translateY(-2px)}
+.progress{margin-top:56px;padding-top:24px;border-top:1px solid var(--line)}
+.progress p{margin:0 0 12px;font-family:var(--display);font-size:.95rem;color:var(--ink)}
+.seg{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
+.seg span{height:14px;border-radius:3px;background:var(--line);position:relative;overflow:hidden}
+.seg span.done{background:var(--accent)}
+.seg span.now{background:var(--mark)}
+.seg span.done,.seg span.now{animation:fill .6s ease-out both;animation-delay:calc(var(--i)*110ms)}
+@keyframes fill{from{transform:scaleX(0);transform-origin:left}to{transform:scaleX(1);transform-origin:left}}
+.progress small{display:block;margin-top:8px;color:var(--muted);font-size:.95rem}
+
+/* Sections */
+section{padding:56px 0;border-top:1px solid var(--line)}
+section h2{font-size:clamp(1.7rem,4vw,2.3rem);margin-bottom:28px}
+.about{display:grid;grid-template-columns:1fr 2fr;gap:40px}
+.about .photo{aspect-ratio:1/1;max-width:260px;border-radius:50%;background:var(--surface);border:2px solid var(--line);display:grid;place-items:center;font-family:var(--display);font-size:3.2rem;font-weight:700;color:var(--accent)}
+.about p{margin:0 0 16px;max-width:62ch}
+
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px}
+.skills h3{font-size:1.15rem;margin-bottom:10px}
+.skills ul{margin:0;padding:0;list-style:none}
+.skills li{padding:6px 0;border-bottom:1px solid var(--line)}
+
+/* Proyek */
+.proj{display:grid;grid-template-columns:200px 1fr;gap:12px 32px;padding:28px 0;border-bottom:1px solid var(--line)}
+.proj:first-of-type{padding-top:0}
+.proj .meta{color:var(--muted);font-size:1rem}
+.proj h3{font-size:1.4rem;margin-bottom:8px}
+.proj p{margin:0 0 12px;max-width:60ch}
+.tags{display:flex;gap:8px;flex-wrap:wrap;padding:0;margin:0 0 12px;list-style:none}
+.tags li{font-family:var(--display);font-size:.85rem;background:var(--surface);border:1px solid var(--line);padding:2px 10px;border-radius:6px}
+.proj a{font-family:var(--display);font-weight:500}
+
+/* Blog */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.filters button{font:500 .95rem var(--display);padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.post{border-bottom:1px solid var(--line)}
+.post summary{display:grid;grid-template-columns:120px 1fr;gap:8px 24px;padding:20px 0;cursor:pointer;list-style:none}
+.post summary::-webkit-details-marker{display:none}
+.post time{color:var(--muted);font-size:1rem}
+.post h3{font-size:1.25rem}
+.post summary:hover h3{color:var(--accent)}
+.post .cat{display:block;color:var(--muted);font-size:.95rem;margin-top:4px}
+.post .body{padding:0 0 24px 144px;max-width:calc(62ch + 144px)}
+.post .body p{margin:0 0 14px}
+.post[hidden]{display:none}
+
+/* Kontak */
+.contact p{max-width:56ch;margin:0 0 20px}
+.links{display:flex;gap:12px;flex-wrap:wrap}
+footer{padding:32px 0 48px;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
+
+@media (max-width:700px){
+  .about,.proj{grid-template-columns:1fr}
+  .post summary{grid-template-columns:1fr}
+  .post .body{padding-left:0}
+  .hero{padding-top:48px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#atas">Nama Lengkap</a>
+    <nav aria-label="Navigasi utama">
+      <a href="#tentang">Tentang</a>
+      <a href="#keahlian">Keahlian</a>
+      <a href="#proyek">Proyek</a>
+      <a href="#blog">Blog</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+  </div>
+</header>
+
+<main id="atas">
+<div class="wrap">
+
+  <!-- ====== HERO ====== -->
+  <div class="hero">
+    <h1>Mahasiswa yang belajar membangun web.</h1>
+    <p>Halo, saya Nama Lengkap, mahasiswa Teknik Informatika di Nama Universitas. Di sini saya menyimpan proyek kuliah dan catatan belajar saya selama semester 5.</p>
+    <div class="btns">
+      <a class="btn main" href="#proyek">Lihat proyek</a>
+      <a class="btn" href="#blog">Baca catatan</a>
+    </div>
+    <div class="progress">
+      <p>Perjalanan kuliah</p>
+      <div class="seg" role="img" aria-label="Semester 5 dari 8 sedang berjalan">
+        <span class="done" style="--i:0"></span><span class="done" style="--i:1"></span><span class="done" style="--i:2"></span><span class="done" style="--i:3"></span><span class="now" style="--i:4"></span><span></span><span></span><span></span>
+      </div>
+      <small>Semester 5 dari 8 sedang berjalan.</small>
+    </div>
+  </div>
+
+  <!-- ====== TENTANG ====== -->
+  <section id="tentang">
+    <h2>Tentang saya</h2>
+    <div class="about">
+      <div class="photo" aria-hidden="true">NL</div>
+      <!-- GANTI: ganti div.photo dengan <img src="foto.jpg" alt="Foto Nama Lengkap" class="photo"> jika punya foto -->
+      <div>
+        <p>Saya mahasiswa semester 5 program studi Teknik Informatika. Saya tertarik pada pengembangan web, basis data, dan cara membuat aplikasi yang mudah dipakai orang awam.</p>
+        <p>Selain kuliah, saya aktif di organisasi kampus dan suka menulis ulang materi kuliah dengan bahasa sendiri. Cara itu membantu saya benar-benar paham, bukan sekadar hafal.</p>
+        <p>Saat ini saya mencari kesempatan magang di bidang pengembangan web.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== KEAHLIAN ====== -->
+  <section id="keahlian">
+    <h2>Keahlian</h2>
+    <div class="skills">
+      <div>
+        <h3>Pengembangan web</h3>
+        <ul><li>HTML & CSS</li><li>JavaScript dasar</li><li>PHP & Laravel (belajar)</li><li>Git & GitHub</li></ul>
+      </div>
+      <div>
+        <h3>Data & sistem</h3>
+        <ul><li>MySQL & perancangan basis data</li><li>Python untuk analisis sederhana</li><li>UML & analisis kebutuhan</li></ul>
+      </div>
+      <div>
+        <h3>Kerja sama</h3>
+        <ul><li>Presentasi proyek kelompok</li><li>Dokumentasi teknis</li><li>Manajemen waktu tugas besar</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PROYEK ====== -->
+  <!-- GANTI: ubah judul, deskripsi, tag, dan link sesuai proyek kuliah Anda. Salin satu blok .proj untuk menambah proyek. -->
+  <section id="proyek">
+    <h2>Proyek kuliah</h2>
+
+    <article class="proj">
+      <div class="meta">Pemrograman Web<br>Semester 5, 2026</div>
+      <div>
+        <h3>Sistem Peminjaman Ruang Kelas</h3>
+        <p>Aplikasi web untuk memesan ruang kelas dan melihat jadwal yang kosong. Saya mengerjakan rancangan basis data dan halaman pemesanan.</p>
+        <ul class="tags"><li>PHP</li><li>MySQL</li><li>Bootstrap</li></ul>
+        <a href="#">Lihat kode di GitHub</a>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div class="meta">Basis Data Lanjut<br>Semester 5, 2026</div>
+      <div>
+        <h3>Basis Data Toko Buku Kampus</h3>
+        <p>Perancangan basis data lengkap, dari ERD sampai normalisasi dan query laporan penjualan bulanan.</p>
+        <ul class="tags"><li>MySQL</li><li>ERD</li><li>Normalisasi</li></ul>
+        <a href="#">Baca laporan proyek</a>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div class="meta">Interaksi Manusia & Komputer<br>Semester 5, 2026</div>
+      <div>
+        <h3>Redesain Aplikasi Perpustakaan</h3>
+        <p>Studi kegunaan dengan 8 responden, lalu prototipe baru yang memangkas langkah peminjaman buku dari 7 menjadi 4.</p>
+        <ul class="tags"><li>Figma</li><li>Usability testing</li></ul>
+        <a href="#">Lihat prototipe</a>
+      </div>
+    </article>
+  </section>
+
+  <!-- ====== BLOG ====== -->
+  <!-- GANTI: tiap <details class="post"> adalah satu tulisan. Atur data-kat sesuai tombol filter. -->
+  <section id="blog">
+    <h2>Catatan belajar</h2>
+    <div class="filters" role="group" aria-label="Filter kategori">
+      <button type="button" data-f="semua" aria-pressed="true">Semua</button>
+      <button type="button" data-f="web" aria-pressed="false">Web</button>
+      <button type="button" data-f="data" aria-pressed="false">Basis data</button>
+      <button type="button" data-f="refleksi" aria-pressed="false">Refleksi</button>
+    </div>
+
+    <details class="post" data-kat="web">
+      <summary>
+        <time datetime="2026-10-05">5 Okt 2026</time>
+        <div><h3>Memahami Flexbox lewat satu halaman portofolio</h3><span class="cat">Web, 4 menit baca</span></div>
+      </summary>
+      <div class="body">
+        <p>Awalnya saya bingung kenapa elemen tidak mau sejajar. Ternyata saya lupa bahwa Flexbox bekerja pada elemen induk, bukan pada anak yang ingin diatur.</p>
+        <p>Setelah mencoba beberapa kali, saya mencatat tiga properti yang paling sering dipakai: display, justify-content, dan align-items.</p>
+      </div>
+    </details>
+
+    <details class="post" data-kat="data">
+      <summary>
+        <time datetime="2026-09-22">22 Sep 2026</time>
+        <div><h3>Normalisasi tanpa pusing: contoh dari data toko buku</h3><span class="cat">Basis data, 6 menit baca</span></div>
+      </summary>
+      <div class="body">
+        <p>Normalisasi terasa abstrak sampai saya mencoba pada tabel penjualan yang berantakan. Memecah satu tabel besar menjadi tiga tabel kecil membuat data tidak lagi berulang.</p>
+        <p>Di tulisan ini saya tunjukkan tiap tahap dari 1NF sampai 3NF dengan contoh nyata.</p>
+      </div>
+    </details>
+
+    <details class="post" data-kat="refleksi">
+      <summary>
+        <time datetime="2026-09-10">10 Sep 2026</time>
+        <div><h3>Apa yang saya pelajari dari kerja kelompok proyek web</h3><span class="cat">Refleksi, 5 menit baca</span></div>
+      </summary>
+      <div class="body">
+        <p>Konflik kode di Git ternyata lebih mudah diselesaikan kalau tim sepakat pada aturan cabang sejak awal. Kami belajar itu dengan cara yang agak mahal.</p>
+        <p>Saya juga belajar bahwa menulis README yang jelas menghemat banyak pertanyaan di grup chat.</p>
+      </div>
+    </details>
+
+    <details class="post" data-kat="web">
+      <summary>
+        <time datetime="2026-08-28">28 Agu 2026</time>
+        <div><h3>Mengunggah situs pertama ke GitHub Pages</h3><span class="cat">Web, 3 menit baca</span></div>
+      </summary>
+      <div class="body">
+        <p>Langkahnya ternyata singkat: buat repositori, unggah index.html, lalu aktifkan Pages di pengaturan. Situs saya tampil dalam beberapa menit.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ====== KONTAK ====== -->
+  <section id="kontak" class="contact">
+    <h2>Kontak</h2>
+    <p>Saya terbuka untuk magang, kolaborasi proyek, atau sekadar diskusi tentang web. Kirim pesan lewat email atau tautan di bawah.</p>
+    <div class="links">
+      <a class="btn main" href="mailto:nama@email.com">Kirim email</a>
+      <a class="btn" href="https://github.com/username">GitHub</a>
+      <a class="btn" href="https://linkedin.com/in/username">LinkedIn</a>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">&copy; 2026 Nama Lengkap. Dibuat untuk tugas mata kuliah semester 5.</div>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll('.filters button');
+  var posts=document.querySelectorAll('.post');
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      var f=b.getAttribute('data-f');
+      btns.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+      posts.forEach(function(p){p.hidden=!(f==='semua'||p.getAttribute('data-kat')===f);});
+    });
+  });
+})();
+</script>
+</body>
+</html>
